@@ -1,0 +1,27 @@
+{
+  "name": "rehype-details",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ir1d/rehype-details.git"
+  },
+  "author": "Ir1d",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ir1d/rehype-details/issues"
+  },
+  "homepage": "https://github.com/Ir1d/rehype-details#readme",
+  "dependencies": {
+    "rehype-stringify": "^6.0.1",
+    "remark-parse": "^7.0.2",
+    "remark-rehype": "^5.0.0",
+    "to-vfile": "^6.0.0",
+    "unified": "^8.4.2",
+    "vfile-reporter": "^6.0.0"
+  }
+}
