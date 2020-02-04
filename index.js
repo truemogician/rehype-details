@@ -70,7 +70,7 @@ function rehypeDetails(options) {
 
 
       // console.log((ch.length))
-      console.log((starter + result + ending))
+      // console.log((starter + result + ending))
       // node.children = parseHtml.parse(result).children
       node.children = parseHtml.parse(starter + result + ending).children
     }
