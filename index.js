@@ -30,20 +30,19 @@ function rehypeDetails(options) {
       }
       // console.log(node)
   
-      let header = node.properties.header || []
+      let header = node.properties.header || ""
       let icon = 'note'
       let display = 0
-      let value = node.properties.summary || []
+      let value = node.properties.summary || ""
       
       if (header.length > 0)
         header = header.replace('\n', '')
 
-      //   // value = header.substr('4') || ''
-      //   const arr = header.split(value)
-      //   if (arr[0].indexOf('+') > -1) display = 1
+        // const arr = header.split(value)
+        if (header.substr(0, 4).indexOf('+') > -1) display = 1
         
       //   // const title = arr[1]
-      //   // if (value.indexOf('warning') > -1) icon = 'warning'
+        if (value.indexOf('warning') > -1) icon = 'warning'
       //   // value = value.replace(icon, '').trim()
       //   // console.log(`${title}, ${header}, ${value}, ${display}`)
       //   // value = value.replace(/"+$/, "").replace(/^"+/, "").trim();
@@ -52,10 +51,11 @@ function rehypeDetails(options) {
 
 
       const ch = node.children
-      // console.log(ch)
+      // console.log(header)
       // console.log(toHTML(node))
-      let classes = `details-${icon}` + (display?' details-open':'')
-      let starter = `<details class=${classes}>`
+      let classes = `details-${icon}` + (display?` details-open`:``)
+      // console.log(classes)
+      let starter = `<details class="${classes}">`
       if (value && value.length > 0) {
         value = value.trim()
         starter += `<summary>${value}</summary>`
@@ -70,7 +70,7 @@ function rehypeDetails(options) {
 
 
       // console.log((ch.length))
-      // console.log((starter + result + ending))
+      console.log((starter + result + ending))
       // node.children = parseHtml.parse(result).children
       node.children = parseHtml.parse(starter + result + ending).children
     }
