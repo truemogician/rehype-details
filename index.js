@@ -58,7 +58,7 @@ function rehypeDetails(options) {
       let starter = `<details class="${classes}">`
       if (value && value.length > 0) {
         value = value.trim()
-        starter += `<summary>${value}</summary>`
+        starter += `<summary class="summary-note">${value}</summary>`
       }
       let result = ''
       let ending = `</details>`
