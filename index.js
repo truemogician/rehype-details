@@ -33,13 +33,13 @@ function rehypeDetails(options) {
       let header = node.properties.header || ""
       let icon = 'note'
       let display = 0
-      let value = node.properties.summary || ""
+      let value = node.properties.summary || "<p>Details</p>"
       
       if (header.length > 0)
         header = header.replace('\n', '')
 
         // const arr = header.split(value)
-        if (header.substr(0, 4).indexOf('+') > -1) display = 1
+        if (header.indexOf('!!!') > -1 || header.substr(0, 4).indexOf('+') > -1) display = 1
         
       //   // const title = arr[1]
         if (value.indexOf('warning') > -1) icon = 'warning'
