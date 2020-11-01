@@ -25,7 +25,8 @@ function rehypeDetails(options) {
     visit(tree, 'element', visitor)
 
     function visitor(node, index, parent) {
-      if (node.tagName !== 'div' || node.properties.class !== 'details') {
+      const className = node.properties.className || []
+      if (node.tagName !== 'div' || !className.includes('details')) {
         return;
       }
       // console.log(node)
