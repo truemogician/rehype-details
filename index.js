@@ -10,54 +10,39 @@ function rehypeDetails(options) {
 
   return transformDetails;
 
-  function transformDetails(tree, file) {
+  function transformDetails(tree) {
     visit(tree, 'element', visitor);
 
     function visitor(node, index, parent) {
+      // only process <div class="details" ... />
       const className = node.properties.className || [];
       if (node.tagName !== 'div' || !className.includes('details')) {
         return;
       }
-      // console.log(node)
 
       let header = node.properties.header || '';
-      let icon = 'note';
-      let display = 0;
-      let value = node.properties.summary || '<p>Details</p>';
-
       if (header.length > 0) header = header.replace('\n', '');
-
-      // const arr = header.split(value)
-      if (header.indexOf('!!!') > -1 || header.substr(0, 4).indexOf('+') > -1)
+      // if has !!! or has '+' then set details to be expanded by default
+      let display = 0;
+      if (header.indexOf('!!!') > -1 || header.substr(0, 4).indexOf('+') > -1) {
         display = 1;
+      }
 
-      //   // const title = arr[1]
+      let icon = 'note';
+      let value = node.properties.summary || '<p>Details</p>';
       if (value.indexOf('warning') > -1) icon = 'warning';
-      //   // value = value.replace(icon, '').trim()
-      //   // console.log(`${title}, ${header}, ${value}, ${display}`)
-      //   // value = value.replace(/"+$/, "").replace(/^"+/, "").trim();
-      // }
 
-      const ch = node.children;
-      // console.log(header)
-      // console.log(toHTML(node))
       let classes = `details-${icon}` + (display ? ` details-open` : ``);
-      // console.log(classes)
       let starter = `<details class="${classes}">`;
       if (value && value.length > 0) {
         value = value.trim();
         starter += `<summary class="summary-note">${value}</summary>`;
       }
       let result = '';
-      let ending = `</details>`;
+      const ch = node.children;
       for (let cur of ch) result += toHTML(cur);
-      //       node.children
+      let ending = `</details>`;
 
-      // {/* <summary>Details</summary> */}
-
-      // console.log((ch.length))
-      // console.log((starter + result + ending))
-      // node.children = parseHtml.parse(result).children
       node.children = parseHtml.parse(starter + result + ending).children;
     }
   }
