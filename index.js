@@ -15,6 +15,8 @@ function rehypeDetails(options) {
 
     function visitor(node, index, parent) {
       // only process <div class="details" ... />
+      console.log(node);
+      return;
       const className = node.properties.className || [];
       if (node.tagName !== 'div' || !className.includes('details')) {
         return;
