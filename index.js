@@ -1,53 +1,18 @@
-const visit = require('unist-util-visit');
-const unified = require('unified');
-const parse = require('rehype-parse');
-const toHTML = require('hast-util-to-html');
+import { h } from 'hastscript';
+import { visit } from 'unist-util-visit';
 
-const parseHtml = unified().use(parse, { fragment: true, position: false });
+export default function rehypeDetails(options) {
+  return transform;
 
-function rehypeDetails(options) {
-  const opts = options || {};
+  function transform(tree) {
+    visit(tree, ['detailsContainer', 'detailsContainerSummary'], ondetails);
+  }
 
-  return transformDetails;
+  function ondetails(node) {
+    var data = node.data || (node.data = {});
+    var hast = h(node.name, node.attributes);
 
-  function transformDetails(tree) {
-    visit(tree, 'element', visitor);
-
-    function visitor(node, index, parent) {
-      // only process <div class="details" ... />
-      console.log(node);
-      return;
-      const className = node.properties.className || [];
-      if (node.tagName !== 'div' || !className.includes('details')) {
-        return;
-      }
-
-      let header = node.properties.header || '';
-      if (header.length > 0) header = header.replace('\n', '');
-      // if has !!! or has '+' then set details to be expanded by default
-      let display = 0;
-      if (header.indexOf('!!!') > -1 || header.substr(0, 4).indexOf('+') > -1) {
-        display = 1;
-      }
-
-      let icon = 'note';
-      let value = node.properties.summary || '<p>Details</p>';
-      if (value.indexOf('warning') > -1) icon = 'warning';
-
-      let classes = `details-${icon}` + (display ? ` details-open` : ``);
-      let starter = `<details class="${classes}">`;
-      if (value && value.length > 0) {
-        value = value.trim();
-        starter += `<summary class="summary-note">${value}</summary>`;
-      }
-      let result = '';
-      const ch = node.children;
-      for (let cur of ch) result += toHTML(cur);
-      let ending = `</details>`;
-
-      node.children = parseHtml.parse(starter + result + ending).children;
-    }
+    data.hName = hast.tagName;
+    data.hProperties = hast.properties;
   }
 }
-
-module.exports = rehypeDetails;
