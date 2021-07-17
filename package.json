@@ -2,9 +2,19 @@
   "name": "rehype-details",
   "version": "1.9.0",
   "description": "",
-  "main": "index.js",
+  "engine": {
+    "node": ">=14.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "build": "zx scripts/build.mjs"
   },
   "repository": {
     "type": "git",
