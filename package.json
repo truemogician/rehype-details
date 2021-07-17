@@ -52,6 +52,5 @@
     "remark-details": "^3.0.0",
     "remark-directive": "^1.0.1",
     "zx": "^2.0.0"
-  },
-  "type": "module"
+  }
 }
