@@ -2,6 +2,7 @@
   "name": "rehype-details",
   "version": "1.9.0",
   "description": "",
+  "type": "module",
   "engine": {
     "node": ">=14.0.0"
   },
@@ -11,6 +12,7 @@
       "require": "./dist/index.js"
     }
   },
+  "types": "./index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "test": "ava",
@@ -27,16 +29,17 @@
   },
   "homepage": "https://github.com/Ir1d/rehype-details#readme",
   "dependencies": {
+    "hast": "^1.0.0",
+    "unist-util-visit": "^3.1.0",
+    "unified": "^10.1.0"
+  },
+  "devDependencies": {
     "@babel/runtime": "^7.14.6",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
     "to-vfile": "^7.2.0",
-    "unified": "^10.0.0",
-    "unist-util-visit": "^3.1.0",
-    "vfile-reporter": "^7.0.1"
-  },
-  "devDependencies": {
+    "vfile-reporter": "^7.0.1",
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
     "ava": "^3.15.0",
