@@ -25,7 +25,7 @@ test('main', (t) => {
     .process(fs.readFileSync('tests/a.md'), function (err, file) {
       console.error(report(err || file));
       console.log(String(file));
-      fs.writeFileSync('tmp', String(file));
+      fs.writeFileSync('tests/result.html', String(file));
     });
   t.pass();
 });
