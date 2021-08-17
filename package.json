@@ -2,9 +2,21 @@
   "name": "rehype-details",
   "version": "1.9.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "engine": {
+    "node": ">=14.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "types": "./index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava",
+    "build": "zx scripts/build.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,11 +29,31 @@
   },
   "homepage": "https://github.com/Ir1d/rehype-details#readme",
   "dependencies": {
-    "rehype-stringify": "^6.0.1",
-    "remark-parse": "^7.0.2",
-    "remark-rehype": "^5.0.0",
-    "to-vfile": "^6.0.0",
-    "unified": "^8.4.2",
-    "vfile-reporter": "^6.0.0"
+    "hast": "^1.0.0",
+    "unist-util-visit": "^3.1.0",
+    "unified": "^10.1.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.14.6",
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.1.0",
+    "to-vfile": "^7.2.0",
+    "vfile-reporter": "^7.0.1",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "ava": "^3.15.0",
+    "babel-preset-gatsby-package": "^1.9.0",
+    "bumpp": "^6.0.6",
+    "child_process": "^1.0.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "fs-extra": "^10.0.0",
+    "prettier": "^2.3.2",
+    "rehype-parse": "^7.0.1",
+    "remark-details": "^3.0.0",
+    "remark-directive": "^1.0.1",
+    "zx": "^2.0.0"
   }
 }
