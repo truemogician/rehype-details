@@ -1,12 +1,10 @@
 const test = require('ava');
 
 const markdown = require('remark-parse');
-const vfile = require('to-vfile');
 const report = require('vfile-reporter');
 const unified = require('unified');
 const directive = require('remark-directive');
-const details = require('remark-details');
-const magic = require('../index.js');
+const magic = require('../lib/index.mjs');
 const remark2rehype = require('remark-rehype');
 const html = require('rehype-stringify');
 const fs = require('fs');

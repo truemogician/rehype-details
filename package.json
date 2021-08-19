@@ -8,11 +8,11 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "ava",
     "build": "zx scripts/build.mjs"
