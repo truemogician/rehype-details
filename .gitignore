@@ -1,5 +1,6 @@
-# Test result
-tests/*.html
+# Build result
+*.js
+*.d.ts
 
 # Logs
 logs
