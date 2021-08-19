@@ -8,15 +8,16 @@
   },
   "exports": {
     ".": {
-      "import": "./lib/index.mjs",
+      "import": "./lib/index.js",
       "require": "./lib/index.cjs"
     }
   },
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "ava",
     "build": "zx scripts/build.mjs",
-    "prepublishOnly": "yarn build"
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
