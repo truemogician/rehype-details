@@ -15,7 +15,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "ava",
-    "build": "zx scripts/build.mjs"
+    "build": "zx scripts/build.mjs",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
