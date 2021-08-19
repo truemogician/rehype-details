@@ -16,7 +16,7 @@
   "scripts": {
     "test": "ava",
     "build": "zx scripts/build.mjs",
-    "prepublishOnly": "yarn build"
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
